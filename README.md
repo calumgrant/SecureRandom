@@ -28,13 +28,15 @@ void Main()
 This algorithm solves the fundamental problem "how do you shuffle a deck of cards using a string of binary entropy."
 
 The fundamental problem is that the entropy from sources such as `RNGCryptoServiceProvider` only produce arrays of bytes,
-and need to be converted into other bases. This is extremely inconvenient. The conversion process is a delicate matter. It is important that the resulting numbers are unbiased, and that the resulting array is "perfectly shuffled" meaning that all permutations are equally likely.
+and need to be converted into other bases before they can be used. This is extremely inconvenient, error-prone, and potentially inefficient.
 
-Aside from implementation errors, it is desirable to minimise the number of bytes read from the input stream, because
+It is important that the resulting numbers are unbiased, and when shuffling an array (such as a deck of cards), that the resulting array is "perfectly shuffled" meaning that all permutations are equally likely.
+
+It is desirable to minimise the number of bytes read from the input stream, because
 hardware entropy can be slow to generate, and because it is unsatisfactory from a theoretical perspective to read too much 
 data from the input source.
 
-In order to work with entropy, we store entropy in an "entropy buffer" consisting of a uniform random number "value" in the range [0, size).
+In order to work with entropy, we store randomness in an "entropy buffer" consisting of a uniform random number "value" in the range [0, size).
 
 To be continued...
 
