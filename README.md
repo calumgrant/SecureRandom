@@ -29,7 +29,7 @@ void Main()
 ## Installation
 `SecureRandom` is available as a [nuget package](https://www.nuget.org/packages/SecureRandom), and can be found using the package `SecureRandom`. For example,
 ```
-dotnet add package SecureRandom --version 1.0.0
+dotnet add package SecureRandom --version 1.0.1
 ```
 
 ## Building
