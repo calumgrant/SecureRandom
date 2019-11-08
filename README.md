@@ -89,6 +89,7 @@ In order to extract some entropy from the buffer, we can perform the following o
         size = b;
     }
 ```
+The other "trick" `SecureRandom` uses is to ensure that we resize the entropy buffer very slighty, which means that *split* operation loses a negligible quantity of entropy in practise. Exercise to the reader: prove that the quantity of entropy lost by *Split* is given by the [binary entropy function](https://en.wikipedia.org/wiki/Binary_entropy_function).
 
 The algorithm used by `SecureRandom` is to 
 
