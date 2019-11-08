@@ -1,7 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Calum Grant</Authors>
+    <Company>Calum Grant</Company>
+    <Product>Secure Random</Product>
+    <RepositoryUrl>git@github.com:calumgrant/SecureRandom.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/calumgrant/SecureRandom</PackageProjectUrl>
+    <Copyright>Calum Grant</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A random number generator that generates secure, unbiased random numbers and shuffles from a secure entropy source using a mimumum of entropy.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

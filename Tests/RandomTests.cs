@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 using Entropy;
 using System.Security.Cryptography;
@@ -7,7 +6,6 @@ namespace Tests
 {
     public class RandomTests
     {
-
         EntropyCounter Counter;
         SecureRandom RNG;
 
@@ -56,7 +54,7 @@ namespace Tests
             int sum = 0;
             for (int i = 0; i < 52; ++i) sum += values[i];
 
-            Assert.Equal(288, Counter.BitsRead);  // ?? Could this ever be greater?
+            Assert.Equal(288, Counter.BitsRead);  // Has a low probability of failure
             Assert.Equal((51 * 52) / 2, sum);  // Basic test to see if it's shuffled.
         }
     }

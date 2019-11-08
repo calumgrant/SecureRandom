@@ -13,7 +13,7 @@ namespace Entropy
     ///   of any range
     /// - very efficiently uses entropy from the entropy source.
     /// </summary>
-    public class SecureRandom : Random
+    public class SecureRandom : Random, IDisposable
     {
         /// <summary>
         /// Creates a new SecureRandom using a 'RNGCryptoServiceProvider'
@@ -46,8 +46,6 @@ namespace Entropy
 
         private ulong Next(ulong v)
         {
-            lock (source)
-            {
                 for (;;)
                 {
                     // Step 1: Read more entropy into 'value'
@@ -97,7 +95,6 @@ namespace Entropy
                         value -= newSize;
                         size = remainder;
                     }
-                }
             }
         }
 
@@ -137,6 +134,11 @@ namespace Entropy
         public override void NextBytes(byte[] values)
         {
             source.GetBytes(values);
+        }
+
+        public void Dispose()
+        {
+            source.Dispose();
         }
 
         private ulong value;  // A random number in the range [0,size)

@@ -1,7 +1,7 @@
 # SecureRandom
 `SecureRandom` is a drop-in replacement for `System.Random` that produces unbiased, cryptographically secure random numbers, and unbiased, cryptographically secure shuffles.
 
-This combines the convenience of [System.Random]()https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netstandard-2.0 with the security of [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0).
+This combines the convenience of [System.Random](https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netstandard-2.0 with the security of [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0).
 
 `SecureRandom` uses a (possibly novel) algorithm for entropy conversion, that reads hardware entropy from `RNGCryptoServiceProvider` (or  some other entropy source), and converts it to a different base, whilst losing a minimum amount of entropy in the process.
 
@@ -14,7 +14,7 @@ using Entropy;
 
 void Main()
 {
-    var random = new SecureRandom();
+    using var random = new SecureRandom();
     
     // 100 cryptographically secure dice rolls
     for (int i=0; i<100; ++i)

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/SecureRandom
+/SecureRandom/bin
+/SecureRandom/obj
+/Tests/bin
+/Tests/obj
