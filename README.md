@@ -72,8 +72,8 @@ In order to extract some entropy from the buffer, we can perform the following o
 - *Factor*: If `size = n*m`, then we can factor the entropy buffer into two smaller entropy buffers of size `n` and `m`.
 
 ```
-    a = value/m;
-    b = value%m;
+    value1 = value / m;
+    value2 = value % m;
 ```
 
 - *Split*: If `size = a+b`, then we can spend up to 1 bit of entropy in order to produce an entropy buffer of size `a` or size `b`.
@@ -94,6 +94,6 @@ The algorithm used by `SecureRandom` is to
 
 1. Ensure a large entropy buffer by reading as much data as possible from the entropy source into `value`.
 2. Resize the buffer using *split* such that `size = n*m`.
-3. *Factor* the buffer into the result (`value%n`) and the residue (`value/n`).
+3. *Factor* the buffer into the result `value%n` and the residue `value/n`.
 
 The efficency of this algorithm is extremely good, since the *split* operation loses very little entropy on average.
