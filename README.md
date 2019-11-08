@@ -1,7 +1,7 @@
 # SecureRandom
 `SecureRandom` is a drop-in replacement for `System.Random` that produces unbiased, cryptographically secure random numbers, and unbiased, cryptographically secure shuffles.
 
-This combines the convenience of `System.Random` with the security of `System.Security.Cryptography.RNGCryptoServiceProvider`.
+This combines the convenience of [System.Random]()https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netstandard-2.0 with the security of [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0).
 
 `SecureRandom` uses a (possibly novel) algorithm for entropy conversion, that reads hardware entropy from `RNGCryptoServiceProvider` (or  some other entropy source), and converts it to a different base, whilst losing a minimum amount of entropy in the process.
 
@@ -16,11 +16,11 @@ void Main()
 {
     var random = new SecureRandom();
     
-    // Roll a die 100 times
+    // 100 cryptographically secure dice rolls
     for (int i=0; i<100; ++i)
         Console.WriteLine($"You rolled a {random.Next(1,7)}");
     
-    // Random shuffle
+    // Cryptographically secure random shuffle
     var deck = new int[52];
     random.Shuffle(deck);
 }
@@ -54,7 +54,7 @@ dotnet test
 This algorithm solves the fundamental problem "how do you shuffle a deck of cards using a string of binary entropy."
 
 The fundamental problem is that the entropy from sources such as `RNGCryptoServiceProvider` only produce arrays of bytes,
-and need to be converted into other forms before they can be used. This is extremely inconvenient, error-prone, and potentially inefficient.
+and need to be converted into other forms before they can be used. This is extremely inconvenient, error-prone, and potentially inefficient. See for example [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0) which attempts to convert bytes into dice rolls. 
 
 It is important that the resulting numbers are unbiased, and when shuffling an array (such as a deck of cards), that the resulting array is "perfectly shuffled" meaning that all permutations are equally likely.
 
