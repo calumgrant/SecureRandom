@@ -1,8 +1,9 @@
 # SecureRandom
-Secure random number generation based on entropy conversion.
+`SecureRandom` is a drop-in replacement for `System.Random` that produces unbiased, cryptographically secure random numbers, and unbiased, cryptographically secure shuffles.
 
-This produces a perfect unbiased random number sequence based on a cryptographically
-secure entropy source such as `RNGCryptoServiceProvider`.
+This combines the convenience of `System.Random` with the security of `System.Security.Cryptography.RNGCryptoServiceProvider`.
+
+`SecureRandom` uses a (possibly novel) algorithm for entropy conversion, that reads hardware entropy from `RNGCryptoServiceProvider` (or  some other entropy source), and converts it to a different base, whilst losing a minimum amount of entropy in the process.
 
 ## Usage
 
@@ -91,7 +92,7 @@ In order to extract some entropy from the buffer, we can perform the following o
 
 The algorithm used by `SecureRandom` is to 
 
-1. Ensure a large entropy buffer by reading as much data as possible from the source into `value`.
+1. Ensure a large entropy buffer by reading as much data as possible from the entropy source into `value`.
 2. Resize the buffer using *split* such that size = `n*m`.
 3. *Factor* the buffer into the result (`value%n`) and the residue (`value/n`).
 
