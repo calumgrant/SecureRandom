@@ -1,7 +1,7 @@
 # SecureRandom
 `SecureRandom` is a drop-in replacement for `System.Random` that produces unbiased, cryptographically secure random numbers, and unbiased, cryptographically secure shuffles.
 
-This combines the convenience of (System.Random)[https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netstandard-2.0) with the security of [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0).
+This combines the convenience of [System.Random](https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netstandard-2.0) with the security of [System.Security.Cryptography.RNGCryptoServiceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=netstandard-2.0).
 
 `SecureRandom` uses a (possibly novel) algorithm for entropy conversion, that reads hardware entropy from `RNGCryptoServiceProvider` (or  some other entropy source), and converts it to a different base, whilst losing a minimum amount of entropy in the process.
 
@@ -93,7 +93,7 @@ In order to extract some entropy from the buffer, we can perform the following o
 The algorithm used by `SecureRandom` is to 
 
 1. Ensure a large entropy buffer by reading as much data as possible from the entropy source into `value`.
-2. Resize the buffer using *split* such that size = `n*m`.
+2. Resize the buffer using *split* such that `size = n*m`.
 3. *Factor* the buffer into the result (`value%n`) and the residue (`value/n`).
 
 The efficency of this algorithm is extremely good, since the *split* operation loses very little entropy on average.
